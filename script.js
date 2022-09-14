@@ -70,14 +70,17 @@ const gameOver = () => {
 
   // show result modal
   resultModal.innerHTML = "";
-  resultModal.classList.toggle("hidden");
-  modalBackground.classList.toggle("hidden");
+  // resultModal.classList.toggle("hidden");
+  resultModal.style.display = "block";
+  // resultModal.classList.add("modal-position");
+  modalBackground.classList.remove("hidden");
   // clear user text
   display.innerHTML = "";
   // make it inactive
   display.classList.add("inactive");
   // show result
-  resultModal.innerHTML += `
+  console.log(resultModal);
+  resultModal.innerHTML = `
     <h1>Finished!</h1>
     <p>You took: <span class="bold">${timeTaken}</span> seconds</p>
     <p>You made <span class="bold red">${errorCount}</span> mistakes</p>
@@ -96,6 +99,7 @@ const gameOver = () => {
 const closeModal = () => {
   modalBackground.classList.toggle("hidden");
   resultModal.classList.toggle("hidden");
+  resultModal.style.display = "none";
 };
 
 const start = () => {
@@ -109,7 +113,7 @@ const start = () => {
 
   const startCountdown = setInterval(() => {
     countdownOverlay.innerHTML = `<h1>${count}</h1>`;
-    console.log(count);
+    // console.log(count);
 
     // finished timer
     if (count == 0) {
